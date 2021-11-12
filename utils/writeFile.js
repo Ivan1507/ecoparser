@@ -1,4 +1,6 @@
 const fs = require("fs");
+const path = require("path")
+const ExistsFile = require("./existsFile")
 function WriteFile(filename = 'weather', jsonBody) {
     let filePath = path.join(__dirname, `/../${filename}.json`);
     if (!ExistsFile(filename)) {
