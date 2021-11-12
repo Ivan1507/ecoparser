@@ -1,25 +1,24 @@
 var express = require('express');
-var XLSX=require('xlsx')
+var xlsx=require('xlsx')
 var router = express.Router();
 
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const work=XLSX.readFile('test.xlsx');
-  var sheet_name_list = work.SheetNames;
+  const work=xlsx.readFile(__dirname+  '/test.xlsx');
+  let sheet_name_list = work.SheetNames;
 
-  var xlData = XLSX.utils.sheet_to_json(work.Sheets[sheet_name_list[0]]);
+  let xlData = xlsx.utils.sheet_to_json(work.Sheets[sheet_name_list[0]]);
 
-  xlData.forEach((element)=>{
-    //console.log(element)
-    for(let i in element) {
-      if(element.hasOwnProperty(i))
-        console.log(element[i])
-    }
-  res.render('index', { title: 'Express' });
+  // xlData.forEach((element)=>{
+  //   //console.log(element)
+  //   for(let i in element) {
+  //     if(element.hasOwnProperty(i))
+  //       console.log(element[i])
+  //   }
 
-  })
+  res.status(200).json(xlData[0]);
 });
 
 module.exports = router;
