@@ -6,7 +6,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
   const work=XLSX.readFile('test.xlsx');
   var sheet_name_list = work.SheetNames;
 
@@ -18,6 +17,7 @@ router.get('/', function(req, res, next) {
       if(element.hasOwnProperty(i))
         console.log(element[i])
     }
+  res.render('index', { title: 'Express' });
 
   })
 });
