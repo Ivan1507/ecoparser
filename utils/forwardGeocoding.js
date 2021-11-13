@@ -1,5 +1,7 @@
 let accessToken = 'pk.eyJ1IjoiYW50b256dXoiLCJhIjoiY2t2MmszNnlzMDEybjMwcHA1c3ZhcmQwYyJ9.0YoIoBX5rwFe18ix7TJKHw';
- function ForwardGeocoding(){
+let axios = require("axios")
+
+function ForwardGeocoding(){
     let text = "г. Челябинск, п. Мелькомбинат 2 участок 1, д. 37.json";
 
     let url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
@@ -37,7 +39,23 @@ const forwardGeocoding = function (address) {
     //         console.log("Location :", location);
     //     }
     // })
-    return [55.17+rand(1), 61.53+rand(1)]
+
+    // https://geocode-maps.yandex.ru/1.x
+    //         ? geocode=<string>
+    //         & apikey=<string>
+    //         & [sco=<string>]
+    //         & [kind=<string>]
+    //             & [rspn=<boolean>]
+    //                 & [ll=<number>, <number>]
+    //                     & [spn=<number>, <number>]
+    //                         & [bbox=<number>,<number>~<number>,<number>]
+    //                             & [format=<string>]
+    //                                 & [skip=<integer>]
+    //                                     & [lang=<string>]
+    //                                         & [callback=<str
+
+
+    return [55.17+rand(0.3), 61.53+rand(0.3)]
 }
 
 module.exports = forwardGeocoding
