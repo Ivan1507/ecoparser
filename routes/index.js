@@ -25,7 +25,7 @@ let EmissionData = ReadFile("EmissionData")
 
 console.log(EmissionData)
 
-async function airpollition (address) {
+async function airpollition (lat,lon) {
 
     // var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
     //     + encodeURIComponent(address) + '.json?access_token='
@@ -49,8 +49,7 @@ async function airpollition (address) {
     //     }
     // })
 
-    let lat=55.17;
-    let lon=61.53;
+
     const directionsUrl = 'http://api.openweathermap.org/data/2.5/air_pollution/history' +
         '?lat=' +lat+
         '&' +
@@ -67,8 +66,18 @@ router.get("/test", async function (req, res, next) {
     res.status(200).json(coords);
 })
 router.get("/test1", async function (req, res, next) {
-    let coords = await airpollition("Россия, Челябинская обл., г.Челябинск, ул. Линейная, д. 98, скл. 8")
-    res.status(200).json(coords);
+    let coords = await airpollition(55.28080717453824,61.52473179974551)
+    let pm2_5=0;
+    let pm10=0;
+    let s02=0;
+    let len=coords.list.length
+    for(let i=0;i<len;i++){
+        pm2_5+=coords.list[i].components.pm2_5
+        pm10+=coords.list[i].components.pm10
+        s02+=coords.list[i].components.so2
+    }
+    console.log(pm2_5,pm10,s02)
+    res.status(200).json(coords.list);
 })
 
 
