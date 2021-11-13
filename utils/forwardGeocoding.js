@@ -9,12 +9,13 @@ let accessToken = 'pk.eyJ1IjoiYW50b256dXoiLCJhIjoiY2t2MmszNnlzMDEybjMwcHA1c3Zhcm
     console.log(url)
 }
 
+let axios = require("axios")
 const request = require('request');
 var ACCESS_TOKEN = accessToken//'YOUR_API_KEY';
 function rand(max){
     return Math.random()*max*2 - max
 }
-const forwardGeocoding = function (address) {
+async function forwardGeocoding (address) {
 
     // var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
     //     + encodeURIComponent(address) + '.json?access_token='
@@ -37,7 +38,16 @@ const forwardGeocoding = function (address) {
     //         console.log("Location :", location);
     //     }
     // })
-    return [55.17+rand(1), 61.53+rand(1)]
+
+    let lat=55.17+rand(1);
+    let lon=61.53+rand(1);
+    const directionsUrl = 'http://api.openweathermap.org/data/2.5/air_pollution/forecast' +
+        '?lat=' +lat+
+        '&' +
+        'lon=' +lon+
+        '&appid=cd4b0e9b350c30989a8efdb68b703cfa';
+    console.log(directionsUrl);
+    return await axios.get(directionsUrl).then(res => res.data);
 }
 
 module.exports = forwardGeocoding
