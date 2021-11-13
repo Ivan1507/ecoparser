@@ -1,4 +1,4 @@
-# ecoparser
+# EcoParser - NodeJS RESTFul web-service
 Методика установки программного решения, разработанного во время хакатона "Цифровой прорыв"
 Go to the NodeJS website and download NodeJS
 1. Скачайте на официальном сайте Node.js
