@@ -22,4 +22,4 @@ Go to the NodeJS website and download NodeJS
 <ol>
   <li>Масштабируемость проекта (увеличение производительности в 2-3 раза, если переписать на стек технологий Java Spring Framework);</li>
   <li><li>Киллерфича-2;</li>
-  <li>Киллерфича-3;</li></li>
+  <li>Киллерфича-3;</li>
